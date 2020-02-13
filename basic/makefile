@@ -1,5 +1,5 @@
 main: main.cpp
-	g++ main.cpp -lGL -lGLU -lglut
+	g++ main.cpp -lm -lGL -L/usr/X11R6/lib -lGLU -lglut -lGLEW -lXi -lXmu
 
 run: a.out
 	./a.out
