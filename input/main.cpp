@@ -12,8 +12,6 @@ void drawScene( void )
 {
     glClear( GL_COLOR_BUFFER_BIT );
     
-    glBegin( GL_TRIANGLES );
-    
     float x = 0.5;
     float y = 0.5;
 
