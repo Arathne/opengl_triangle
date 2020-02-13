@@ -77,9 +77,6 @@ int main( int argc, char** argv )
 	glutReshapeFunc( resize );
 	glutKeyboardFunc( keyInput );
 
-	//glewExperimental = GL_TRUE;
-	//glewInit();
-
 	glClearColor( 1,1,1,0 );
 	
 	setup();
