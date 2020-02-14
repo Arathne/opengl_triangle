@@ -33,7 +33,7 @@ int main( int argc, char** argv )
     glutInitWindowPosition( 300, 300 );
     glutInitWindowSize( 500, 500 );
     
-    glutCreateWindow( "viewport triangle" );
+    glutCreateWindow( "ortho triangle" );
     glutDisplayFunc( draw );
     glutReshapeFunc( resize );
     
