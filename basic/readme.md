@@ -1,1 +1,1 @@
-### creates a basic triangle in classical opengl. 
+### creates a basic triangle in classical opengl
