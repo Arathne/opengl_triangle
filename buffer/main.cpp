@@ -27,7 +27,6 @@ void keyboard ( unsigned char key, int x, int y )
 void setup (void)
 {
     glClearColor( 0.5, 0.5, 0.5, 1.0 );
-    glEnableClientState( GL_VERTEX_ARRAY );
 
     glGenBuffers( 1, &VBO );
     glBindBuffer( GL_ARRAY_BUFFER, VBO );
