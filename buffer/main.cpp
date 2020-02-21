@@ -2,7 +2,6 @@
 #include <GL/freeglut.h>
 
 unsigned int VBO;
-unsigned int VBA;
 
 float vertices[] = {
     -0.5f, -0.5f, 0.0f,
