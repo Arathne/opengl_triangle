@@ -1,9 +1,6 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 
-
-unsigned int VAO, VBO;
-
 float vertices[] = {
     -0.5f, -0.5f, 0.0f,
      0.5f, -0.5f, 0.0f,
