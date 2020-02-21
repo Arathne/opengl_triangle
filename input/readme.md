@@ -1,4 +1,4 @@
-###takes a key press and moves the triangle accordingly
+### takes a key press and moves the triangle accordingly
 
 #### W = move up
 #### A = move right
