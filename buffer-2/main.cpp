@@ -1,7 +1,6 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 
-unsigned int buffer[4];
 unsigned int vbo[2];
 
 bool buffer1 = true;
@@ -31,7 +30,7 @@ void draw (void)
     glBindBuffer( GL_ARRAY_BUFFER, vbo[i] );
     glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), (void*) 0 );
     
-    glDrawArrays( GL_TRIANGLES, 0, 6 );
+    glDrawArrays( GL_TRIANGLES, 0, 3 );
 
     glFlush();
 }
