@@ -24,7 +24,6 @@ void draw (void)
     glClear( GL_COLOR_BUFFER_BIT );
     
     glBindVertexArray( vao[i] );
-    glEnableVertexAttribArray(0);
     
     glDrawArrays( GL_TRIANGLES, 0, 3 );
 

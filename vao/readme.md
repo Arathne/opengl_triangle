@@ -1,3 +1,3 @@
 ### uses two vertex array objects that each store a single buffer
 
-#### using it this way is very similar to the buffer-2 exercise and is kinda pointless in this context.
+#### all you need to do is bind the correct vertex array object to draw the object you want without having to call glVertexAttribPointer constantly.
