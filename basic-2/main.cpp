@@ -1,11 +1,9 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
-#include <iostream>
 
-#include <string> 
-#include <cstring> // for converting string to char array
 #include <fstream> // for reading file
 #include <sstream> // for converting file to string
+#include <cstring> // for converting string to char array
 
 unsigned int vbo;
 unsigned int vao;
@@ -50,48 +48,26 @@ void file_to_shader ( std::string vertexFile, std::string fragmentFile )
     char* src_vertex;
     char* src_fragment;
     
-    src_vertex = file_to_char( vertexFile, src_vertex );
+    src_vertex = file_to_char( vertexFile, src_vertex );  // convert file to a character array
     src_fragment = file_to_char( fragmentFile, src_fragment );
 
-    unsigned int vertexShader = glCreateShader( GL_VERTEX_SHADER );
+    unsigned int vertexShader = glCreateShader( GL_VERTEX_SHADER );  // create shaders
     unsigned int fragmentShader = glCreateShader( GL_FRAGMENT_SHADER );
 
-    glShaderSource( vertexShader, 1, &src_vertex, NULL );
-    glCompileShader( vertexShader );
-    
-    int success;
-    char infoLog[512];
-    glGetShaderiv( vertexShader, GL_COMPILE_STATUS, &success );
-    if( !success )
-    {
-        glGetShaderInfoLog( vertexShader, 512, NULL, infoLog );
-        std::cout << "ERROR: VERTEX SHADER\n" << infoLog << std::endl;
-    }
-    
+    glShaderSource( vertexShader, 1, &src_vertex, NULL );  // give shader data
     glShaderSource( fragmentShader, 1, &src_fragment, NULL );
+    
+    glCompileShader( vertexShader );  // compile shaders
     glCompileShader( fragmentShader );
 
-    glGetShaderiv( fragmentShader, GL_COMPILE_STATUS, &success );
-    if( !success )
-    {
-        glGetShaderInfoLog( fragmentShader, 512, NULL, infoLog );
-        std::cout << "ERROR: FRAGMENT SHADER\n" << infoLog << std::endl;
-    }
-    
     shaderProgram = glCreateProgram();
     
-    glAttachShader( shaderProgram, vertexShader );
+    glAttachShader( shaderProgram, vertexShader ); // attach shaders to a program
     glAttachShader( shaderProgram, fragmentShader );
     glLinkProgram( shaderProgram );
     
-    glGetProgramiv( shaderProgram, GL_LINK_STATUS, &success );
-    if( !success )
-    {
-        glGetProgramInfoLog( shaderProgram, 512, NULL, infoLog );
-        std::cout << "ERROR: LINKING SHADERS\n" << infoLog << std::endl;
-    }
+    glUseProgram( shaderProgram ); // use program with shaders attached to it
 
-    glUseProgram( shaderProgram );
     glDeleteShader( vertexShader );
     glDeleteShader( fragmentShader );
 }
@@ -101,7 +77,7 @@ void setup (void)
     glClearColor( 0.5, 0.5, 0.5, 1.0 );
     file_to_shader( "vertex.shader", "fragment.shader" );
     
-    glGenVertexArrays( 1, &vao );
+    glGenVertexArrays( 1, &vao );  // vao is required with core profile
     glBindVertexArray( vao );
 
     glGenBuffers( 1, &vbo );
