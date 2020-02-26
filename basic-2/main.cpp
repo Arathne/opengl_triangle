@@ -20,7 +20,6 @@ void draw (void)
 {
     glClear( GL_COLOR_BUFFER_BIT );
     
-    glUseProgram( shaderProgram );
     glVertexAttribPointer( 0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(float), (void*) 0 );
 
     glDrawArrays( GL_TRIANGLES, 0, 3 );
