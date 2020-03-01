@@ -10,7 +10,7 @@ shader.o: shader.h
 run: a.out
 	./a.out
 
-clean: a.out
+clean:
 	rm a.out
 	rm shader.o
 	rm main.o
