@@ -20,7 +20,6 @@ static float vertices2[] =
 void draw (void)
 {
     glClear( GL_COLOR_BUFFER_BIT );
-    
     glDrawArrays( GL_TRIANGLES, 0, 6 );
 
     glFlush();
