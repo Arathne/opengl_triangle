@@ -1,6 +1,9 @@
 #include <GL/glew.h>
 #include <GL/freeglut.h>
 #include <iostream>
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 #include "shader.h"
 #include "texture.h"
@@ -26,6 +29,16 @@ void draw (void)
     glDrawArrays( GL_TRIANGLES, 0, 3 );
 
     glFlush();
+}
+
+void matrix (void)
+{
+    glm::mat4 transform = glm::mat4(1.0f);
+    transform = glm::scale( transform, glm::vec3(0.5, 0.5, 0.5) );   
+    transform = glm::rotate( transform, glm::radians(45.0f), glm::vec3(0.0f, 0.0f, 1.0f) );
+
+    unsigned int uniformLocation = glGetUniformLocation( shaderProgram, "transform" );
+    glUniformMatrix4fv( uniformLocation, 1, GL_FALSE, glm::value_ptr(transform) );
 }
 
 void shaders (void)
@@ -69,6 +82,7 @@ void setup (void)
     glEnableVertexAttribArray(2);
 
     texture();
+    matrix();
 }
 
 void keyboard (unsigned char key, int x, int y)
