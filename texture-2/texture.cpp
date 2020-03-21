@@ -7,12 +7,20 @@ Texture::Texture (void) {}
 
 Texture::~Texture (void)
 {
-    delete[] data;
+    if( data == nullptr )
+        delete[] data;
 }
 
-Texture::Texture (std::string file, unsigned int image_rgb, unsigned int opengl_rgb) 
+Texture::Texture (std::string file) 
 {
+    this-> file = file;
+    
     glGenTextures( 1, &id );
+    data = stbi_load( file.c_str(), &width, &height, &channels, 0 );
+}
+
+void Texture::load (unsigned int image_rgb, unsigned int opengl_rgb) const
+{
     glBindTexture( GL_TEXTURE_2D, id );
     
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT );
@@ -21,8 +29,6 @@ Texture::Texture (std::string file, unsigned int image_rgb, unsigned int opengl_
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR );
     glTexParameteri( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR );
     
-    data = stbi_load( file.c_str(), &width, &height, &channels, 0 );
-    
     if( data )
     {
         glTexImage2D( GL_TEXTURE_2D, 0, image_rgb, width, height, 0, opengl_rgb, GL_UNSIGNED_BYTE, data );
@@ -30,8 +36,6 @@ Texture::Texture (std::string file, unsigned int image_rgb, unsigned int opengl_
     }
     else
     {
-        std::cout << "FAILED TO LOAD TEXTURE" << std::endl;
+        std::cout << "FAILED TO LOAD TEXTURE :: " << file << std::endl;
     }
-
-    stbi_image_free( data );
 }

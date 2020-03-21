@@ -9,6 +9,8 @@ unsigned int vao;
 unsigned int vbo;
 unsigned int shaderProgram;
 
+Texture container( "container.jpg" );
+
 static float vertices[] =
 {
     // positions    // colors            //texture coords
@@ -42,7 +44,8 @@ void shaders (void)
 
 void texture (void)
 {
-    Texture* container = new Texture( "container.jpg", GL_RGB, GL_RGB );    
+    container.load( GL_RGB, GL_RGB );
+    container.load( GL_RGB, GL_RGB );
 }
 
 void setup (void)

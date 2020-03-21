@@ -10,6 +10,7 @@ class Texture
     private:
         Texture (void);
         
+        std::string file;
         unsigned int id;
         unsigned char* data;
         int width;
@@ -17,8 +18,9 @@ class Texture
         int channels;
  
     public:
-        Texture (std::string file, unsigned int image_rgb, unsigned int opengl_rgb);
         ~Texture (void);
+        Texture (std::string file);
+        void load (unsigned int image_rgb, unsigned int opengl_rgb) const;
 };
 
 #endif
