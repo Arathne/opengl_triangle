@@ -33,12 +33,19 @@ void draw (void)
 
 void matrix (void)
 {
+    float time = glutGet(GLUT_ELAPSED_TIME)/1000.0f;
     glm::mat4 transform = glm::mat4(1.0f);
     transform = glm::scale( transform, glm::vec3(0.5, 0.5, 0.5) );   
-    transform = glm::rotate( transform, glm::radians(45.0f), glm::vec3(0.0f, 0.0f, 1.0f) );
+    transform = glm::rotate( transform, time, glm::vec3(0.0f, 0.0f, 1.0f) );
 
     unsigned int uniformLocation = glGetUniformLocation( shaderProgram, "transform" );
     glUniformMatrix4fv( uniformLocation, 1, GL_FALSE, glm::value_ptr(transform) );
+}
+
+void idle (void)
+{
+    matrix();
+    glutPostRedisplay();
 }
 
 void shaders (void)
@@ -105,6 +112,7 @@ int main( int argc, char** argv )
     glutCreateWindow( "shader 1" );
     glutDisplayFunc( draw );
     glutKeyboardFunc( keyboard );
+    glutIdleFunc( idle );
 
     glewInit();
     setup();
